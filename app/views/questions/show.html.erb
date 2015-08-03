@@ -2,6 +2,19 @@
   <h1><%= @question.title %></a><br> <small>Submitted by <%= @question.user.email %></small></h1>
 </div>
 
+<div class="btn-group pull-right">
+  <%= link_to like_question_path(@question), method: :put, class: "btn btn-default btn-sm" do %>
+    <span class="glyphicon glyphicon-chevron-up"></span>
+    Upvote
+    <%= @question.get_upvotes.size %>
+  <% end %>
+  <%= link_to dislike_question_path(@question), method: :put, class: "btn btn-default btn-sm" do %>
+    <span class="glyphicon glyphicon-chevron-down">
+    Downvote
+    <%= @question.get_downvotes.size %>
+  <% end %>
+</div>
+
 <% if @question.user == current_user -%>
 	<div class="btn-group">
 		<%= link_to 'Edit', edit_question_path(@question), class: "btn btn-default" %>
