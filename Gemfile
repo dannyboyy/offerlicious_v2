@@ -46,3 +46,4 @@ end
 gem 'devise', '~> 3.5.1'
 gem 'bootstrap-sass', '~> 3.3.5.1'
 gem 'acts_as_votable', '~> 0.10.0'
+gem 'annotate', '~> 2.6.10'
