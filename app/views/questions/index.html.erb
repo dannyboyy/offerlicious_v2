@@ -1,25 +1,8 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Listing Questions</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Pro tip url</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @questions.each do |question| %>
-      <tr>
-        <td><%= question.title %></td>
-        <td><%= question.pro_tip_url %></td>
-        <td><%= link_to 'Show', question %></td>
-        <td><%= link_to 'Edit', edit_question_path(question) %></td>
-        <td><%= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<% @questions.each do |question| %>
+  <div class="question row clearfix">
+    <h2>
+      <%= link_to question.title, question %><br>
+      <small class="author">Submitted <%= time_ago_in_words(question.created_at) %> by <%= question.user.email %></small>
+    </h2>
+  </div>
+<% end %>
