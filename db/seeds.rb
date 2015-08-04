@@ -5,3 +5,16 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+require 'faker'
+
+Question.delete_all
+# Create Questions
+50.times do
+  Question.create!(
+    title:  Faker::Lorem.sentence,
+    user_id: '2'
+  )
+end
+
+puts "Seed finished"
+puts "#{Question.count} quetions created"

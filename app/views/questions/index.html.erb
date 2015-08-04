@@ -1,21 +1,28 @@
 <% @questions.each do |question| %>
-  <div class="question row clearfix">
-    <h2>
-      <%= link_to question.title, question %><br>
-      <small class="author">Submitted <%= time_ago_in_words(question.created_at) %> by <%= question.user.username %></small>
-    </h2>
 
-    <div class="btn-group">
-      <%= link_to like_question_path(question), method: :put, class: "btn btn-default btn-sm" do %>
-        <span class="glyphicon glyphicon-chevron-up"></span>
-        Upvote
-        <%= question.get_upvotes.size %>
-      <% end %>
-      <%= link_to dislike_question_path(question), method: :put, class: "btn btn-default btn-sm" do %>
-        <span class="glyphicon glyphicon-chevron-down">
-        Downvote
-        <%= question.get_downvotes.size %>
-      <% end %>
+  <div class="question row clearfix">
+    <div class="col-md-4">
+      <div class="btn-group">
+        <%= link_to like_question_path(question), method: :put, class: "btn btn-default btn-sm" do %>
+          <span class="glyphicon glyphicon-chevron-up"></span>
+          Upvote
+          <%= question.get_upvotes.size %>
+        <% end %>
+        <!-- <%= link_to dislike_question_path(question), method: :put, class: "btn btn-default btn-sm" do %> -->
+          <!-- <span class="glyphicon glyphicon-chevron-down"> -->
+          <!-- Downvote -->
+          <!-- <%= question.get_downvotes.size %> -->
+        <!-- <% end %> -->
+      </div>
     </div>
+    
+    <div class="col-md-8">
+      <h2>
+        <%= link_to question.title, question %><br>
+        <small class="author">Submitted <%= time_ago_in_words(question.created_at) %> by <%= question.user.username %></small>
+      </h2>
+    </div>
+    
+
   </div>
 <% end %>
