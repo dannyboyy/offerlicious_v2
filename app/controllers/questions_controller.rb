@@ -5,7 +5,8 @@ class QuestionsController < ApplicationController
   # GET /questions
   # GET /questions.json
   def index
-    @questions = Question.all
+    @q = Question.ransack(params[:q])
+    @questions = @q.result
   end
 
   # GET /questions/1
