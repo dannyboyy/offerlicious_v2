@@ -1,5 +1,5 @@
 class QuestionsController < ApplicationController
-  before_action :set_question, only: [:show, :edit, :update, :destroy]
+  before_action :set_question, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
   before_action :authenticate_user!, :except => [:index, :show]
 
   # GET /questions
@@ -64,13 +64,11 @@ class QuestionsController < ApplicationController
   end
 
   def upvote
-    @question = Question.find(params[:id])
     @question.upvote_by current_user
     redirect_to :back
   end
    
   def downvote
-    @question = Question.find(params[:id])
     @question.downvote_by current_user
     redirect_to :back
   end
@@ -78,7 +76,7 @@ class QuestionsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_question
-      @question = Question.find(params[:id])
+      @question = Question.friendly.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
