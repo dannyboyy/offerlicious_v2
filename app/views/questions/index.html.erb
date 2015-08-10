@@ -10,17 +10,7 @@
       <small class="author">Submitted <%= time_ago_in_words(question.created_at) %> by <%= question.user.username %></small>
     </h2>
 
-    <div class="btn-group">
-      <%= link_to like_question_path(question), method: :put, class: "btn btn-default btn-sm" do %>
-        <span class="glyphicon glyphicon-chevron-up"></span>
-        Upvote
-        <%= question.get_upvotes.size %>
-      <% end %>
-      <%= link_to dislike_question_path(question), method: :put, class: "btn btn-default btn-sm" do %>
-        <span class="glyphicon glyphicon-chevron-down"></span>
-        Downvote
-        <%= question.get_downvotes.size %>
-      <% end %>
-    </div>
+    <%= render partial: 'votes', locals:{question: question} %>
+
   </div>
 <% end %>

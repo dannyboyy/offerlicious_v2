@@ -30,9 +30,10 @@
 #
 
 Rails.application.routes.draw do
+
   devise_for :users
 
-  root 'questions#index'
+  root 'welcome#index'
 
   resources :questions do
     member do
