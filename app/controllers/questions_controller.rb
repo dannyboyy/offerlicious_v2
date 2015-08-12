@@ -1,6 +1,6 @@
 class QuestionsController < ApplicationController
   before_action :set_question, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
-  before_action :authenticate_user!
+  before_action :authenticate_user!, only: [:upvote, :downvote]
 
   # GET /questions
   # GET /questions.json
@@ -65,12 +65,20 @@ class QuestionsController < ApplicationController
 
   def upvote
     @question.upvote_by current_user
-    redirect_to :back
+
+    respond_to do |format|
+      format.html {redirect_to :back}
+      format.js 
+    end
   end
    
   def downvote
     @question.downvote_by current_user
-    redirect_to :back
+    
+    respond_to do |format|
+      format.html {redirect_to :back}
+      format.js
+    end
   end
 
   private
