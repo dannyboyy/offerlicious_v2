@@ -9,8 +9,6 @@
       <%= link_to question.title, question %><br>
       <small class="author">Submitted <%= time_ago_in_words(question.created_at) %> by <%= question.user.username %></small>
     </h2>
-    
-    <%= render partial: 'votes', locals:{question: question} %>
-
+    <p id="question_<%= question.id %>_likes"><%= render partial: "likes", locals: {question: question} %></p>
   </div>
 <% end %>

@@ -30,6 +30,15 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :questions
+  has_many :likes
 
-  acts_as_voter
+  def likes?(question)
+  	question.likes.where(user_id: id).any?
+  end
+
+  # Gravatar implementation to show user gravatar next to likes
+  def avatar_url
+  	hash = Digest::MD5.hexdigest(email)
+    "http://www.gravatar.com/avatar/#{hash}"
+  end
 end

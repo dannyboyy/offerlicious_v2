@@ -36,10 +36,7 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   resources :questions do
-    member do
-      put "like", to: "questions#upvote"
-      put "dislike", to: "questions#downvote"
-    end
+  	resource :like, module: :questions
   end
 
 

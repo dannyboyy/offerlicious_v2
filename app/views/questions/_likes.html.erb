@@ -1,0 +1,15 @@
+<% if user_signed_in? && current_user.likes?(question) %>
+	<%= link_to question_like_path(question), method: :delete, remote: true do %>
+		<i class="fa fa-hand-pointer-o"></i>
+	<% end %>
+<% else %>
+	<%= link_to question_like_path(question), method: :post, remote: true do %>
+		<i class="fa fa-hand-pointer-o"></i>
+	<% end %>
+<% end %>
+
+<%= question.likes.count %>
+
+<% question.likes.each do |like| %>
+  <%= image_tag like.user.avatar_url, width: 20 %>
+<% end %>

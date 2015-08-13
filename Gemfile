@@ -45,9 +45,8 @@ end
 
 gem 'devise', '~> 3.5.1'
 gem 'bootstrap-sass', '~> 3.3.5.1'
-gem 'acts_as_votable', '~> 0.10.0'
 gem 'annotate', '~> 2.6.10'
 gem 'faker', '~> 1.4.3'
 gem 'ransack', '~> 1.6.6'
 gem 'friendly_id', '~> 5.1.0'
-gem 'font-awesome-sass'
+gem 'font-awesome-rails', '~> 4.4.0.0'
